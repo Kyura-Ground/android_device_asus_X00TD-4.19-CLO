@@ -1,32 +1,30 @@
 #
-# Copyright (C) 2020 The LineageOS Project
+# Copyright (C) 2023 Paranoid Android
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
+ifeq (aospa_X00TD, $(TARGET_PRODUCT))
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# Inherit some common LineageOS stuff
-$(call inherit-product, vendor/pixys/config/common_full_phone.mk)
+# Inherit from X00TD device configuration.
+$(call inherit-product, device/asus/X00TD/device.mk)
 
-# Bootanimation
-TARGET_BOOT_ANIMATION_RES := 1080
+# Inherit from common AOSPA configuration
+$(call inherit-product, vendor/aospa/target/product/aospa-target.mk)
 
-# Gapps Config
-TARGET_GAPPS_ARCH := arm64
-
-# Inherit from X00TD device
-$(call inherit-product, $(LOCAL_PATH)/device.mk)
-
-# Device identifier. This must come after all inclusions.
-PRODUCT_NAME := pixys_X00TD
+PRODUCT_NAME := aospa_X00TD
 PRODUCT_DEVICE := X00TD
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Zenfone Max Pro M1
 PRODUCT_MANUFACTURER := asus
+
+# Boot animation resolution.
+TARGET_BOOT_ANIMATION_RES := 1080
 
 PRODUCT_GMS_CLIENTID_BASE := android-asus
 
@@ -37,3 +35,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # Build fingerprint
 BUILD_FINGERPRINT := "asus/WW_X00TD/ASUS_X00T_2:8.1.0/OPM1/15.2016.1805.318-20180712:user/release-keys"
+
+endif

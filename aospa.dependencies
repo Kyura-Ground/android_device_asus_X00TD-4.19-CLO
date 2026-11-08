@@ -1,0 +1,8 @@
+[
+  {
+    "remote": "kyura",
+    "repository": "Kyura-Ground/android_device_asus_sdm660-common-4.19-CLO",
+    "target_path": "device/asus/sdm660-common",
+    "revision": "topaz"
+  }
+]
