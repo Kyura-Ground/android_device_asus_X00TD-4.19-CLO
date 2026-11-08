@@ -21,6 +21,8 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Kernel
 TARGET_KERNEL_CONFIG := vendor/X00TD_defconfig vendor/debugfs.config
+KERNEL_LLVM_SUPPORT := true
+KERNEL_FULL_LLVM := true
 
 # Inherit the proprietary files
 include vendor/asus/X00TD/BoardConfigVendor.mk
